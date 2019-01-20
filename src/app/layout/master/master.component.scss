@@ -1,0 +1,25 @@
+.initial-currency {
+  border-bottom: 1px solid #000;
+}
+
+.currency-detail {
+  border: 1px solid #000;
+  margin: 1rem auto;
+}
+
+.border-right, .border {
+  border-color: #000 !important;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-add {
+  border: 1px solid #000;
+  width: 100%;
+  text-align: left;
+}
