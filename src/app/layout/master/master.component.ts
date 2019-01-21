@@ -70,8 +70,8 @@ export class MasterComponent implements OnInit {
   }
 
   submitCurrency() {
-    let newCurrency = document.getElementById('newCurrency').value.toUpperCase();
-
+    let newCurrency = (<HTMLInputElement>document.getElementById('newCurrency')).value.toUpperCase();
+    
     if (newCurrency !== '') {
       this.slug = newCurrency;
       this.renderListRegisteredCurrency();
