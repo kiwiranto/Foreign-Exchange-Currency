@@ -1,5 +1,13 @@
 .initial-currency {
   border-bottom: 1px solid #000;
+  h5 {
+    margin-bottom: 0;
+  }
+  input {
+    border-radius: 6px;
+    border-style: groove;
+    outline: none;
+  }
 }
 
 .currency-detail {
@@ -22,4 +30,16 @@ button {
   border: 1px solid #000;
   width: 100%;
   text-align: left;
+}
+
+.currency__input {
+  input {
+    width: 90%;
+    border: 1px solid #000;
+    text-transform: uppercase;
+  }
+  .btn-submit {
+    width: 10%;
+    padding: 4px;
+  }
 }

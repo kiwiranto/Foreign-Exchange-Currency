@@ -2,32 +2,49 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap, timeout  } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ResponseStruct } from '../library/struct/response.struct';
-import { LatestStruct } from './../library/struct/latest-currency.struct';
+import { LatestStruct } from '../../library/struct/latest-currency.struct';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TestService {
-  private apiLatest = 'https://api.exchangeratesapi.io/latest';
+export class ApiService {
+  private baseApi = 'https://api.exchangeratesapi.io/latest';
+  private baseUsdApi = 'https://api.exchangeratesapi.io/latest?base=USD';
+  private filterApi = 'https://api.exchangeratesapi.io/latest?symbols=';
 
   constructor(private http: HttpClient) { }
 
+  /* Get All Currency List Base USD */
   getCurrencyLatest(): Observable<LatestStruct> {
     const httpOptions = {
       headers: new HttpHeaders({
       })
     };
 
-    return this.http.get<LatestStruct>(this.apiLatest)
+    return this.http.get<LatestStruct>(this.baseUsdApi)
     .pipe(
         tap(response => this.handleSuccess(function() {
-          console.log('Sukses!!')
+
         })),
         catchError(this.handleError<LatestStruct>('getCurrencyLatest'))
     );
   }
 
+  /* Get List Registered Currency on Apps */
+  listRegisteredCurrency(slug): Observable<LatestStruct> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+      })
+    };
+
+    return this.http.get<LatestStruct>(this.filterApi+slug)
+    .pipe(
+        tap(response => this.handleSuccess(function() {
+
+        })),
+        catchError(this.handleError<LatestStruct>('listRegisteredCurrency'))
+    );
+  }
 
   /* HANDLE SUCCESS */
   private handleSuccess(whatsHappen) {
@@ -54,5 +71,4 @@ export class TestService {
   log(data){
     return console.log(data);
   }
-
 }
