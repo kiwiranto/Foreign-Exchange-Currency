@@ -12,7 +12,7 @@
     <div class="row align-items-center m-0">
       <div class="col-10 col-sm-11 border-right py-2">
         <div class="clearfix">
-          <span class="currency__code float-left">{{ currencyData.currencyCode }}</span>
+          <h5 class="currency__code float-left">{{ currencyData.currencyCode }}</h5>
           <span class="float-right">{{ (currencyData.currencyValue * initialInput) }}</span>
         </div>
         <!-- <div class="currency__fullname">{{ currencyData.currencyCode }} - United State Dollar</div> -->
@@ -25,8 +25,8 @@
   </div>
 
   <div class="currency-add">
-    <button class="btn-add" (click)="addCurrency()" [class.d-none]="addCurrencyStatus">(+) Add More Currencies</button>
-    <div class="currency__input" [class.d-none]="!addCurrencyStatus">
+    <button class="btn-add" (click)="addCurrency()" *ngIf="!addCurrencyStatus">(+) Add More Currencies</button>
+    <div class="currency__input" *ngIf="addCurrencyStatus">
       <input type="text" id="newCurrency" maxlength="3">
       <button type="button" class="btn-submit border" (click)="submitCurrency()">Submit</button>
     </div>

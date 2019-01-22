@@ -18,7 +18,7 @@ export class MasterComponent implements OnInit {
   constructor(public apiService: ApiService) { }
 
   ngOnInit() {
-    this.renderListRegisteredCurrency();
+    this.renderRegisteredCurrency();
 
     document.querySelector('input[type="tel"]').addEventListener('input', function(e) {
       this.value = this.value.replace(/[^0-9\+]/g, '');
@@ -42,11 +42,11 @@ export class MasterComponent implements OnInit {
     });
   }
 
-  renderListRegisteredCurrency() {
-    this.apiService.listRegisteredCurrency(this.slug).subscribe(response => this.handleListCurrency(response));
+  renderRegisteredCurrency() {
+    this.apiService.listRegisteredCurrency(this.slug).subscribe(response => this.handleRegisteredCurrency(response));
   }
 
-  handleListCurrency(response) {
+  handleRegisteredCurrency(response) {
     this.currencyRegistered = response;
     let newResponse = response.rates;
     let self = this;
@@ -74,7 +74,7 @@ export class MasterComponent implements OnInit {
     
     if (newCurrency !== '') {
       this.slug = newCurrency;
-      this.renderListRegisteredCurrency();
+      this.renderRegisteredCurrency();
     } else {
       alert('Please fill input!');
     }
