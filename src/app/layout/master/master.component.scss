@@ -15,6 +15,7 @@
 .currency-detail {
   border: 1px solid #000;
   margin: 1rem auto;
+  border-radius: 6px;
 }
 
 .border-right, .border {
@@ -32,12 +33,15 @@ button {
   border: 1px solid #000;
   width: 100%;
   text-align: left;
+  border-radius: 6px;
+  padding: 4px;
 }
 
 .currency__input {
   input {
     width: 90%;
     border: 1px solid #000;
+    border-radius: 6px 0 0 6px;
     text-transform: uppercase;
     @include mobile() {
       width: 80%;
@@ -46,6 +50,7 @@ button {
   .btn-submit {
     width: 10%;
     padding: 4px;
+    border-radius: 0 6px 6px 0;
     @include mobile() {
       width: 20%;
     }

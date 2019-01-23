@@ -27,7 +27,7 @@
   <div class="currency-add">
     <button class="btn-add" (click)="addCurrency()" *ngIf="!addCurrencyStatus">(+) Add More Currencies</button>
     <div class="currency__input" *ngIf="addCurrencyStatus">
-      <input type="text" id="newCurrency" maxlength="3" [value]="newCurrency">
+      <input type="text" id="newCurrency" maxlength="3" [value]="newCurrency" readonly>
       <button type="button" class="btn-submit border" (click)="submitCurrency()">Submit</button>
     </div>
   </div>
