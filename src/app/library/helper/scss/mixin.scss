@@ -1,0 +1,30 @@
+/* Media Query */
+@mixin notebook(){
+  @media screen and (min-width: 992px){
+    @content;
+  }
+}
+
+@mixin tablet(){
+  @media screen and (max-width: 991px){
+    @content;
+  }
+}
+
+@mixin mobile(){
+  @media screen and (max-width: 767px){
+    @content;
+  }
+}
+
+@mixin medium_mobile(){
+  @media screen and (max-width: 575px){
+    @content;
+  }
+}
+
+@mixin small_mobile(){
+  @media screen and (max-width: 360px){
+    @content;
+  }
+}

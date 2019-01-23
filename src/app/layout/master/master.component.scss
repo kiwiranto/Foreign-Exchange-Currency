@@ -1,3 +1,5 @@
+@import "../../library/helper/scss/mixin.scss";
+
 .initial-currency {
   border-bottom: 1px solid #000;
   h5 {
@@ -37,9 +39,25 @@ button {
     width: 90%;
     border: 1px solid #000;
     text-transform: uppercase;
+    @include mobile() {
+      width: 80%;
+    }
   }
   .btn-submit {
     width: 10%;
     padding: 4px;
+    @include mobile() {
+      width: 20%;
+    }
+  }
+}
+
+.list-currency {
+  .custom-control {
+    display: inline-block;
+    width: 33.3333%;
+  }
+  input, label {
+    cursor: pointer;
   }
 }

@@ -12,20 +12,23 @@ export class MasterComponent implements OnInit {
   currencyRegistered: LatestStruct;
   initialInput: number = 10;
   customResponse = [];
+  allCurrencyList = [];
   slug = 'USD,IDR';
   addCurrencyStatus: boolean = false;
+  newCurrency = null;
 
   constructor(public apiService: ApiService) { }
 
   ngOnInit() {
     this.renderRegisteredCurrency();
+    this.getAllCurrency();
 
     document.querySelector('input[type="tel"]').addEventListener('input', function(e) {
       this.value = this.value.replace(/[^0-9\+]/g, '');
     });
   }
 
-  getLatestCurrency() {
+  getAllCurrency() {
     this.apiService.getCurrencyLatest().subscribe(response => this.handleLatestCurrency(response));
   }
 
@@ -35,10 +38,10 @@ export class MasterComponent implements OnInit {
     let self = this;
 
     Object.keys(newResponse).forEach(function(key) {
-      let currencyCode = key;
-      let currencyValue = newResponse[key];
+      let currency_code = key;
+      let currency_value = newResponse[key];
 
-      self.customResponse.push({currencyCode, currencyValue});
+      self.allCurrencyList.push({currency_code, currency_value});
     });
   }
 
@@ -52,10 +55,10 @@ export class MasterComponent implements OnInit {
     let self = this;
 
     Object.keys(newResponse).forEach(function(key) {
-      let currencyCode = key;
-      let currencyValue = newResponse[key];
+      let currency_code = key;
+      let currency_value = newResponse[key];
 
-      self.customResponse.push({currencyCode, currencyValue});
+      self.customResponse.push({currency_code, currency_value});
     });
   }
 
@@ -78,6 +81,10 @@ export class MasterComponent implements OnInit {
     } else {
       alert('Please fill input!');
     }
+  }
+
+  selectNewCurrency(currencyCode) {
+    this.newCurrency = currencyCode;
   }
 
 }

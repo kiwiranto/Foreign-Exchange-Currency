@@ -1,6 +1,6 @@
 <div class="initial-currency py-2">
   <div class="container">
-    <span class="currency__fullname">USD - United State Dollar</span>
+    <span class="currency__fullname d-inline-block mb-2">USD - United State Dollar</span>
     <div class="clearfix d-flex align-items-center">
       <h5 class="currency__code currency--strong">USD</h5>
       <input type="tel" id="initialCurrency" class="currency--strong ml-auto" [(ngModel)]="initialInput">
@@ -12,11 +12,11 @@
     <div class="row align-items-center m-0">
       <div class="col-10 col-sm-11 border-right py-2">
         <div class="clearfix">
-          <h5 class="currency__code float-left">{{ currencyData.currencyCode }}</h5>
-          <span class="float-right">{{ (currencyData.currencyValue * initialInput) }}</span>
+          <h5 class="currency__code float-left">{{ currencyData.currency_code }}</h5>
+          <span class="float-right">{{ (currencyData.currency_value * initialInput) }}</span>
         </div>
-        <!-- <div class="currency__fullname">{{ currencyData.currencyCode }} - United State Dollar</div> -->
-        <div class="currency__price">1 USD = {{ currencyData.currencyCode }} {{ currencyData.currencyValue }}</div>
+        <!-- <div class="currency__fullname">{{ currencyData.currency_code }} - United State Dollar</div> -->
+        <div class="currency__price">1 USD = {{ currencyData.currency_code }} {{ currencyData.currency_value }}</div>
       </div>
       <div class="col-2 col-sm-1 text-center">
         <button type="button" class="mb-0" (click)="deleteCurrency(i)">(-)</button>
@@ -27,8 +27,15 @@
   <div class="currency-add">
     <button class="btn-add" (click)="addCurrency()" *ngIf="!addCurrencyStatus">(+) Add More Currencies</button>
     <div class="currency__input" *ngIf="addCurrencyStatus">
-      <input type="text" id="newCurrency" maxlength="3">
+      <input type="text" id="newCurrency" maxlength="3" [value]="newCurrency">
       <button type="button" class="btn-submit border" (click)="submitCurrency()">Submit</button>
+    </div>
+  </div>
+
+  <div class="list-currency mt-3" *ngIf="addCurrencyStatus">
+    <div class="custom-control custom-radio" *ngFor="let currencyData of allCurrencyList; let i = index">
+      <input type="radio" id="customRadio{{i}}" name="customRadio" class="custom-control-input" (click)="selectNewCurrency(currencyData.currency_code)">
+      <label class="custom-control-label" for="customRadio{{i}}">{{ currencyData.currency_code }}</label>
     </div>
   </div>
 </div>
